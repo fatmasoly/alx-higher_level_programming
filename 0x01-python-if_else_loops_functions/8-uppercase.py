@@ -7,10 +7,8 @@ def islower(c):
 
 def uppercase(s):
 
+    result = ""
     for char in s:
-        if islower(char):
-            print("{}".format(chr(ord(char) - 32)), end="")
-        else:
-            print("{}".format(char), end="")
+        result += "{}".format(chr(ord(char) - 32) if islower(char) else char)
 
-    print()
+    print(result)

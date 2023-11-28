@@ -22,11 +22,11 @@ return (*head = new_node);
 }
 while (node)
 {
-if (node->next == NULL
-|| new_node->n < node->next->n)
+if (node->next == NULL || new_node->n < node->next->n)
 {
-new_node->next = new_node;
-return (node);
+new_node->next = node->next;
+node->next = new_node;
+return (new_node);
 }
 node = node->next;
 }

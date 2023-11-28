@@ -25,7 +25,7 @@ while (node)
 if (node->next == NULL
 || new_node->n < node->next->n)
 {
-new_node->next = new;
+new_node->next = new_node;
 return (node);
 }
 node = node->next;

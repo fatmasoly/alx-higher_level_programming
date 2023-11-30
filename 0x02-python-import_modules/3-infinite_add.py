@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sys
-args = [int(arg) for arg in sys.argv[1:]]
-result = sum(args)
-print(result)
+sum = 0
+for args in range(len(sys.argv) - 1):
+    sum += int(sys.argv[args + 1])
+print(sum)

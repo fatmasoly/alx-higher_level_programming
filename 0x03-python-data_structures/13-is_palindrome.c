@@ -1,52 +1,35 @@
-#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "lists.h"
 /**
- * reverse_list - reverses a linked list
- * @head: pointer to the head of the list
- * Return: pointer to the new head of the reversed list
+ * recursive_palindrom - adds a new node at the end of a listint_t list
+ * @head: pointer to pointer of first node of listint_t list
+ * @end: integer to be included in new node
+ * Return: address of the new element or NULL if it fails
  */
-listint_t *reverse_list(listint_t *head)
+int recursive_palindrom(listint_t **head, listint_t *end)
 {
-listint_t *prev = NULL, *current = head, *next = NULL;
-while (current != NULL)
+if (end == NULL)
+return (1);
+if (recursive_palindrom(head, end->next) && ((*head)->n == end->n))
 {
-next = current->next;
-current->next = prev;
-prev = current;
-current = next;
+(*head) = (*head)->next;
+return (1);
 }
-return (prev);
+return (0);
 }
+
 /**
- * is_palindrome - checks if a singly linked list is a palindrome
- * @head: double pointer to the head of the list
- * Return: 1 if the list is a palindrome, 0 otherwise
+ * is_palindrome - Checks if a singly linked list is a palindrome
+ * @head: A double pointer to the head of the linked list
+ *
+ * Return: 1 if the linked list is a palindrome, 0 otherwise
  */
 int is_palindrome(listint_t **head)
 {
-if (*head == NULL || (*head)->next == NULL)
+listint_t *head2 = *head;
+listint_t **head_copy = &head2;
+if (head == NULL || *head == NULL)
 return (1);
-listint_t *slow = *head, *fast = *head;
-listint_t *second_half = NULL, *prev_slow = *head;
-int is_palindrome = 1;
-while (fast != NULL && fast->next != NULL)
-{
-prev_slow = slow;
-slow = slow->next;
-fast = fast->next->next;
+return (recursive_palindrom(head_copy, *head));
 }
-second_half = reverse_list(slow);
-while (*head != NULL && second_half != NULL)
-{
-if ((*head)->n != second_half->n)
-{
-is_palindrome = 0;
-break;
-}
-*head = (*head)->next;
-second_half = second_half->next;
-}
-prev_slow->next = reverse_list(reverse_list(slow));
-return (is_palindrome);
-}
-

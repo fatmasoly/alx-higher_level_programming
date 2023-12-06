@@ -1,24 +1,23 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
-    if roman_string is None or not isinstance(roman_string, str):
+    if roman_string is None or type(roman_string) is not str:
         return 0
 
-    roman_dict = {'I': 1,
-                  'V': 5,
-                  'X': 10,
-                  'L': 50,
-                  'C': 100,
-                  'D': 500,
-                  'M': 1000}
-    result = 0
-
-    for i in range(len(roman_str)):
-        current_value = roman_dict[romn_str[i]]
-        next_val = roman_dict[romn_str[i + 1]] if i + 1 < len(romn_str) else 0
-
-        if current_value < next_val:
-            result -= current_value
+    a_dict = {'M': 1000,
+              'D': 500,
+              'C': 100,
+              'L': 50,
+              'X': 10,
+              'V': 5,
+              'I': 1}
+    roman_string2 = []
+    for x in range(len(roman_string)):
+        if roman_string[x] in a_dict.keys():
+            roman_string2.append(roman_string[x])
+    add, sub = a_dict[roman_string2[-1]], 0
+    for x in range(len(roman_string2) - 1):
+        if a_dict[roman_string2[x]] < a_dict[roman_string2[x + 1]]:
+            sub += a_dict[roman_string2[x]]
         else:
-            result += current_value
-
-    return result
+            add += a_dict[roman_string2[x]]
+    return add - sub

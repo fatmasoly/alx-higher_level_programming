@@ -6,25 +6,20 @@
  */
 void print_python_bytes(PyObject *p)
 {
-PyBytesObject *bytes = (PyBytesObject *)p;
-Py_ssize_t size, i;
-char *string;
-printf("[.] bytes object info\n");
 if (!PyBytes_Check(p))
 {
-printf("  [ERROR] Invalid Bytes Object\n");
+fprintf(stderr, "[ERROR] Invalid Bytes Object\n");
 return;
 }
-size = PyBytes_Size(p);
-string = PyBytes_AsString(p);
+Py_ssize_t size = PyBytes_Size(p);
+char *str = PyBytes_AsString(p);
+printf("[.] bytes object info\n");
 printf("  size: %ld\n", size);
-printf("  trying string: %s\n", string);
-printf("  first 10 bytes: ");
-for (i = 0; i < size && i < 10; i++)
+printf("  trying string: %s\n", str);
+printf("  first 10 bytes:");
+for (Py_ssize_t i = 0; i < size && i < 10; ++i)
 {
-printf("%02x", (unsigned char)string[i]);
-if (i < size - 1 && i < 9)
-printf(" ");
+printf(" %02x", (unsigned char)str[i]);
 }
 printf("\n");
 }

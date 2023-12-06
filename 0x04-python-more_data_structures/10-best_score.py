@@ -4,6 +4,6 @@ def best_score(a_dictionary):
     if a_dictionary is None:
         return None
 
-    best_key = max(a_dictionary, key=a_dictionary.get)
+    best_sco = {key: value * 2 for key, value in a_dictionary.items()}
 
-    return best_key
+    return best_sco

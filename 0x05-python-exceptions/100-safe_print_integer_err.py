@@ -5,5 +5,5 @@ def safe_print_integer_err(value):
         print("{:d}".format(value), end="")
         return True
     except Exception as e:
-        print("Exception: {}".format(e), file=open("/dev/stderr", "w"))
+        print("Exception:", e,  file=open("/dev/stderr", "w"))
         return False

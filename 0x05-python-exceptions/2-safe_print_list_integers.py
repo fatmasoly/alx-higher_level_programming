@@ -9,6 +9,7 @@ def safe_print_list_integers(my_list=[], x=0):
             if idx >= x:
                 print()
                 return num_count
+            idx += 1
             try:
                 print("{:d}".format(my_list[i]), end="")
                 num_count += 1

@@ -9,4 +9,4 @@ class LockedClass:
     __slots__ (list): A list specifying the allowed attribute
     names for instances of the class.
     """
-    __slots__ = ['first_name']
+    __slots__ = ["first_name"]

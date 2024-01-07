@@ -1,0 +1,51 @@
+# This doctest file tests the 'print_square' function in the '4-print_square' module.
+
+# Import the function to be tested
+>>> print_square = __import__('4-print_square').print_square
+
+# Test printing a square of a given size
+>>> print_square(4)
+####
+####
+####
+####
+
+# Test invalid inputs
+# The function expects an integer as input
+>>> print_square(0)
+
+
+# Test invalid inputs
+# The function expects a non-negative integer as input
+>>> print_square(None)
+Traceback (most recent call last):
+ ...
+TypeError: size must be an integer
+
+# Test invalid inputs
+# The function expects a non-negative integer as input
+>>> print_square(4.5)
+Traceback (most recent call last):
+ ...
+TypeError: size must be an integer
+
+# Test invalid inputs
+# The function expects a non-negative integer as input
+>>> print_square(-4.5)
+Traceback (most recent call last):
+ ...
+TypeError: size must be an integer
+
+# Test invalid inputs
+# The function expects a non-negative integer as input
+>>> print_square(-1)
+Traceback (most recent call last):
+ ...
+ValueError: size must be >= 0
+
+# Test invalid inputs
+# The function expects no input
+>>> print_square()
+Traceback (most recent call last):
+ ...
+TypeError: print_square() missing 1 required positional argument: 'size'

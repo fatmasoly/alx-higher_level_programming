@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-
+"""
+The module defines a class `MyList`.
+"""
 
 def is_same_class(obj, a_class):
     """

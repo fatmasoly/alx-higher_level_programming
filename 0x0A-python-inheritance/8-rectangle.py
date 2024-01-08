@@ -23,6 +23,7 @@ Methods:
     Initializes a new instance of the Rectangle class
     with the specified width and height.
 """
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):

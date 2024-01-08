@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 """
-This module defines a class `MyList`.
+This module defines class `MyList`.
 """
 
 
 class BaseGeometry:
     """
-    This module defines a class `MyList`.
+    This module defines class `MyList`.
     """
     def area(self):
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         """
-        This integer_validator.
+        This is method for  integer_validator.
         """
         if type(value) != int:
             raise TypeError(f"{name} must be an integer")

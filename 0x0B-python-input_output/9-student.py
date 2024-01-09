@@ -22,13 +22,13 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-        def to_json(self):
-            """
+    def to_json(self):
+        """
         Converts the Student object to a
         dictionary representation.
 
         Returns:
         dict: A dictionary containing the attributes
         of the Student object.
-            """
-            self.__dict__
+        """
+        return self.__dict__

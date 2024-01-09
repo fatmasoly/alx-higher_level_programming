@@ -4,9 +4,12 @@ This module about a class Student
 """
 
 
+from attr import attrs
+
+
 class Student:
     """
-    A class Student that defines a student by: first_name, last_name, and age.
+    A class Student that defines a student with attr: first_name, last_name, and age.
     """
     def __init__(self, first_name, last_name, age):
         """
@@ -33,9 +36,9 @@ class Student:
         Returns:
         dict: A dictionary containing the selected
         attributes of the Student instance.
-        """
-        if not isinstance(attrs, list):
-            return self.__dict__
+            """
+            if not isinstance(attrs, list):
+                return self.__dict__
         selected = {}
         for x in attrs:
             if not isinstance(x, str):

@@ -40,13 +40,13 @@ class Square(Rectangle):
             return (f"[Square] ({self.id}) {self.x}/{self.y} - \
 {self.height}")
         @property
-    def size(self):
-        """
+        def size(self):
+            """
         Get the size of the square.
 
         Returns:
             int: The size of the square.
-        """
+            """
         return self.width
 
     @size.setter

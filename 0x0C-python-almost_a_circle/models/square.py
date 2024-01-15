@@ -1,78 +1,42 @@
 #!/usr/bin/python3
-"""
-Module description: This module defines the Square
-class, a subclass of Rectangle
-"""
+"""Module for Square class."""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """
-    Summary: Square class, a subclass of Rectangle.
-
-    Args:
-        Rectangle (class): The base class for Square.
-    """
+    """A subclass representing a rectangle."""
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        Initialize the Square object.
+        """Constructor."""
+        super().__init__(size, size, x, y, id)
 
-        Args:
-            size (int): The size of the square.
-            x (int, optional): The x-coordinate of the
-            square's position. Defaults to 0.
-            y (int, optional): The y-coordinate of the
-            square's position. Defaults to 0.
-            id (int, optional): The id of the object. Defaults to None.
+    def __str__(self):
+        """
+        Return a string representation of the Rectangle object.
 
         Returns:
-            Square: An instance of the Square class.
+            str: A string representation of the Rectangle object
         """
-        super.__init__(size, size, x, y, id)
-
-        def __str__(self):
-            """
-            Return a string representation of the Square object.
-
-        Returns:
-            str: A string representation of the Square object.
-            """
-            return (f"[Square] ({self.id}) {self.x}/{self.y} - \
+        return (f"[Square] ({self.id}) {self.x}/{self.y} - \
 {self.height}")
-        @property
-        def size(self):
-            """
-        Get the size of the square.
 
-        Returns:
-            int: The size of the square.
-            """
+    @property
+    def size(self):
         return self.width
 
     @size.setter
     def size(self, value):
-        """
-        Set the size of the square.
-
-        Parameters:
-            value (int): The new size of the square.
-
-        Returns:
-            None
-        """
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
         """
-        Update the Square object.
+        update the object.
 
         Args:
-            *args: Variable number of arguments (id, size, x, y).
-            **kwargs: Variable number of keyword arguments.
-
-        Returns:
-            None
+            id (int, optional): The id of the object.
+            size (int, optional): The width of the rectangle.
+            x (int, optional): The x-coordinate of the rectangle's position.
+            y (int, optional): The y-coordinate of the rectangle's position.
         """
         if len(args) > 0:
             self.id = args[0]
@@ -94,8 +58,7 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """
-        Convert the properties of the square
-        object into a dictionary.
+        Convert the properties of the square object into a dictionary.
 
         Returns:
             dict: A dictionary representation of the square.

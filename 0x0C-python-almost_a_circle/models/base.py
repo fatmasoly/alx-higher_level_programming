@@ -3,6 +3,7 @@
 This module for the base class
 """
 import json
+import turtle
 
 
 class Base:
@@ -111,3 +112,33 @@ class Base:
             return []
         with open(file, "r", encoding="utf-8") as f:
             return [cls.create(**d) for d in cls.from_json_string(f.read())]
+
+        @staticmethod
+        def draw(list_rectangles, list_squares):
+            """
+            Draw rectangles and squares using Turtle graphics
+            """
+        turtle.speed(2)  # Set the drawing speed
+
+        for rect in list_rectangles:
+            turtle.penup()
+            turtle.goto(rect.x, rect.y)
+            turtle.pendown()
+            turtle.forward(rect.width)
+            turtle.left(90)
+            turtle.forward(rect.height)
+            turtle.left(90)
+            turtle.forward(rect.width)
+            turtle.left(90)
+            turtle.forward(rect.height)
+            turtle.left(90)
+
+        for square in list_squares:
+            turtle.penup()
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(square.size)
+                turtle.left(90)
+
+        turtle.exitonclick()

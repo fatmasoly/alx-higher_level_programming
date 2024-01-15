@@ -1,42 +1,70 @@
 #!/usr/bin/python3
-"""Module for Square class."""
+"""This Module for Square class """
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """A subclass representing a rectangle."""
+    """
+    A subclass representing a square, derived from the Rectangle class.
+    Attributes:
+        size (int): The size of the square.
+        x (int, optional): The x-coordinate of the square's position.
+        y (int, optional): The y-coordinate of the square's position.
+        id (int, optional): The id of the square.
+    """
     def __init__(self, size, x=0, y=0, id=None):
-        """Constructor."""
+        """
+        Initialize a Square object.
+
+        Args:
+            size (int): The size of the square.
+            x (int, optional): The x-coordinate of the square's position.
+            y (int, optional): The y-coordinate of the square's position.
+            id (int, optional): The id of the square.
+        """
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
         """
-        Return a string representation of the Rectangle object.
+        Return a string representation of the Square object.
 
         Returns:
-            str: A string representation of the Rectangle object
+            str: A string representation of the Square object.
         """
-        return (f"[Square] ({self.id}) {self.x}/{self.y} - \
-{self.height}")
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.height}"
 
     @property
     def size(self):
+        """
+        Get the size of the square.
+
+        Returns:
+            int: The size of the square.
+        """
         return self.width
 
     @size.setter
     def size(self, value):
+        """
+        Set the size of the square.
+
+        Args:
+            value (int): The size to set for the square.
+        """
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
         """
-        update the object.
+        Update the properties of the square.
 
         Args:
-            id (int, optional): The id of the object.
-            size (int, optional): The width of the rectangle.
-            x (int, optional): The x-coordinate of the rectangle's position.
-            y (int, optional): The y-coordinate of the rectangle's position.
+            *args: Variable arguments. The first argument is
+            the id, the second is the size,
+                the third is the x-coordinate, and the
+                fourth is the y-coordinate.
+            **kwargs: Arbitrary keyword arguments.
+            The valid keys are 'id', 'size', 'x', and 'y'.
         """
         if len(args) > 0:
             self.id = args[0]

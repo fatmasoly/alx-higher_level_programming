@@ -3,7 +3,6 @@
 This module for the base class
 """
 import json
-from os import path
 
 
 class Base:
@@ -106,6 +105,7 @@ class Base:
         Returns:
             list: List of created objects.
         """
+        from os import path
         file = "{}.json".format(cls.__name__)
         if not path.isfile(file):
             return []

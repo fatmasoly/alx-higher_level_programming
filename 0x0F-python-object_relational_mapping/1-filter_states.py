@@ -1,19 +1,28 @@
 #!/usr/bin/python3
 
-import MySQLdb
-from sys import argv
+"""This script connects to a MySQL database
+and retrieves rows from the `states` table
+where the `name` column starts with the letter 'N'.
+It takes command-line arguments for MySQL username,
+password, and database name.
+The script connects to a MySQL server running
+on localhost at port 3306.
+The retrieved rows are displayed in the console."""
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    import MySQLdb
+    import sys
 
-    db = MySQLdb.connect(host="localhost", user=argv[1], port=3306,
-                        password=argv[2], db=argv[3])
-
-
-cur = db.cursor()
-cur.execute("SELECT * FROM states \
-            WHERE name LIKE BINARY 'N%' \
-            ORDER BY states.id ASC")
-rows = cur.fetchall()
-
-for row in rows:
-    print(row)
+    db = MySQLdb.connect(host="localhost",
+                         port=3306,
+                         user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3])
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name"
+                " LIKE BINARY 'N%' ORDER BY id;")
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
+    db.close()

@@ -10,10 +10,10 @@ and closes the session.
 if __name__ == "__main__":
 
     import sys
-    from sqlalchemy.schema import Table
+    from model_state import Base, State
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
-    from model_state import Base, State
+    from sqlalchemy.schema import Table
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
                            .format(sys.argv[1], sys.argv[2],
@@ -22,6 +22,6 @@ if __name__ == "__main__":
 
     session = Session(engine)
     state = session.query(State).filter(State.id == 2).first()
-    State.name = 'New Mexico'
+    state.name = 'New Mexico'
     session.commit()
     session.close()

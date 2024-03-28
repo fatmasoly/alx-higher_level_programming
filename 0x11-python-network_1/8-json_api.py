@@ -5,17 +5,17 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        letter = sys.argv[1]
-    else:
+    if len(sys.argv) == 1:
         letter = ""
-        url = "http://0.0.0.0:5000/search_user"
+    else:
+        letter = sys.argv[1]
+        payload = {"q": letter}
+        response = requests.post("http://0.0.0.0:5000/search_user", data={'q': letter})
     try:
-        response = requests.post(url, data={'q': letter})
         data = response.json()
-        if data:
-            print("[{}] {}".format(data.get('id'), data.get('name')))
-        else:
+        if response == {}:
             print("No result")
+        else:
+            print("[{}] {}".format(response.get("id"), response.get("name")))
     except ValueError:
         print("Not a valid JSON")

@@ -5,14 +5,12 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
-        letter = ""
-    else:
-        letter = sys.argv[1]
-        payload = {"q": letter}
-        response = requests.post("http://0.0.0.0:5000/search_user", data={'q': letter})
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
+    payload = {"q": letter}
+
+    r = requests.post("http://0.0.0.0:5000/search_user", data=payload)
     try:
-        data = response.json()
+        response = r.json()
         if response == {}:
             print("No result")
         else:
